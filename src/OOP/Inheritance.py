@@ -38,13 +38,13 @@ class BaseClass1():
 
 # can inherint more than one class, take note it will 
 # only call the first class __init_subclass__ ? 
-class DerivedClass(BaseClass, BaseClass1):
-	
+class DerivedClass(BaseClass1, BaseClass):
 	
 	# never called?
 	def __init_subclass__(self):
 		print("DerivedClass __init_subclass__")
 
+	# need to specify something else fails, wont pass to BaseClass1 have to call __init__
 	def __init__(self, something):
 		# constructor of BaseClass1 
 		BaseClass1.__init__(self, something)
