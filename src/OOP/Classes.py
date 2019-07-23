@@ -16,8 +16,10 @@ class Location():
 	def set_site(cls, site):
 		cls.site = site
 
+# call class method
 Location.set_site('JHB')
 
+# instance of class
 l = Location('Loc1', 'LOC1', 'Location 1')
 
 print(l.site)
