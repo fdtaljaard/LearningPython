@@ -18,11 +18,17 @@ class BaseClass():
 
 class BaseClass1():
 	
+	# property / attribute , adding just to play and toy with
+	prop = ''
+
 	def __init_subclass__(self):
 		print("BaseClass1 __init_subclass__")
 
-	def __init__(self):
-		print("BaseClass1 __init__")
+	# constructor with param 
+	def __init__(self, something):
+		# set property
+		self.prop = something
+		print("BaseClass1 __init__ " + something)
 
 	def Method1(self):
 		print("BaseClass1 Method1 called")
@@ -32,14 +38,16 @@ class BaseClass1():
 
 # can inherint more than one class, take note it will 
 # only call the first class __init_subclass__ ? 
-class DerivedClass(BaseClass1, BaseClass):
+class DerivedClass(BaseClass, BaseClass1):
 	
+	
+	# never called?
 	def __init_subclass__(self):
 		print("DerivedClass __init_subclass__")
 
-	def __init__(self):
-		# if you want to run base __init__
-		super().__init__() 
+	def __init__(self, something):
+		# constructor of BaseClass1 
+		BaseClass1.__init__(self, something)
 		print("DerivedClass __init__")
 
 	def Method1(self):
@@ -52,7 +60,7 @@ class DerivedClass(BaseClass1, BaseClass):
 		print("DerivedClass Method2 called")
 
 
-dc = DerivedClass()
+dc = DerivedClass('new')
 # call DerivedClass Method3, inherit from BaseClass
 dc.Method3()
 
@@ -61,6 +69,9 @@ dc.Method1()
 
 # call DerivedClass Method2
 dc.Method2()
+
+# property set via constructor 
+print(dc.prop)
 # is the instance of class ?type TypeOf?
 print(isinstance(dc, BaseClass))
 print(isinstance(dc, BaseClass1))
