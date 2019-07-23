@@ -16,17 +16,27 @@ class Location():
 	def set_site(cls, site):
 		cls.site = site
 
-# call class method
+	# create 'constructor' method - I like this
+	@classmethod
+	def new_location(cls, location_str):
+		name, barcode, description = location_str.split('-')
+		return cls(name, barcode, description)
+
+# call class method site will be JHB until you change
 Location.set_site('JHB')
 
-# instance of class
-l = Location('Loc1', 'LOC1', 'Location 1')
+# instance of class via __init__
+l1 = Location('Loc1', 'LOC1', 'Location 1')
 
-print(l.site)
-l.site = 'CPT'
+# instance of class via classmethod
+l2 = Location.new_location('Loc2-LOC2-Location 2')
+print(l2.name)
 
-print(l.site)
+print(l1.site)
+l1.site = 'CPT'
 
-print(l.fullName())
+print(l1.site)
 
-print(l.__dict__)
+print(l1.fullName())
+
+print(l1.__dict__)
