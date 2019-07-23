@@ -40,6 +40,8 @@ class BaseClass1():
 # only call the first class __init_subclass__ ? 
 class DerivedClass(BaseClass1, BaseClass):
 	
+	# def __new__(self, something):
+	#	BaseClass1.__init__(self, something)
 	# never called?
 	def __init_subclass__(self):
 		print("DerivedClass __init_subclass__")
@@ -60,7 +62,7 @@ class DerivedClass(BaseClass1, BaseClass):
 		print("DerivedClass Method2 called")
 
 
-dc = DerivedClass('new')
+dc = DerivedClass('test')
 # call DerivedClass Method3, inherit from BaseClass
 dc.Method3()
 
