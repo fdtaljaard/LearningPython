@@ -1,5 +1,7 @@
 # OOP examples
 
+https://realpython.com/python3-object-oriented-programming/
+
 #### Where's my interfaces, Duck Typing ? OMG
 
 https://stackoverflow.com/questions/2124190/how-do-i-implement-interfaces-in-python
